@@ -1,0 +1,13 @@
+<h1> 🚲ᯓ⋆.ೃ
+    Cycle Booking Dashboard</h1>
+<button onclick="loadPage('book_ride.html')">📋 Book a Ride</button>
+<button onclick="loadPage('ride_history.html')">📖 Ride History</button>
+<button onclick="loadPage('top_spender.html')">🏆 Top Spender</button>
+<button onclick="loadPage('inspection.html')">🔧 Bikes Inspection</button>
+<button onclick="loadPage('most_driven.html')">✇ Most Driven Bike</button>
+<iframe id="contentFrame" width="100%" height="600"></iframe>
+<script>
+    function loadPage(page) {
+        document.getElementById('contentFrame').src = page;
+    }
+</script>

@@ -1,0 +1,10 @@
+<h2>Top Spender</h2>
+<button onclick="showTop()">Get Top Spender</button>
+<pre id="output"></pre>
+<script>
+async function showTop() {
+  const res = await fetch('http://localhost:3000/api/rides/top-spender');
+  const data = await res.json();
+  document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+}
+</script>

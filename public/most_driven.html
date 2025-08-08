@@ -1,0 +1,10 @@
+<h2>Most Driven Bike</h2>
+<button onclick="show()">Show</button>
+<pre id="output"></pre>
+<script>
+    async function show() {
+        const res = await fetch('http://localhost:3000/api/rides/most-driven-bike');
+        const data = await res.json();
+        document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+    }
+</script>

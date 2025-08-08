@@ -1,0 +1,12 @@
+<h2>Ride History</h2>
+<input id="cid" placeholder="Customer ID">
+<button onclick="showHistory()">Get History</button>
+<pre id="output"></pre>
+<script>
+    async function showHistory() {
+        const cid = document.getElementById('cid').value;
+        const res = await fetch(`http://localhost:3000/api/rides/ride-history/${cid}`);
+        const data = await res.json();
+        document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+    }
+</script>

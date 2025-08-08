@@ -1,0 +1,50 @@
+<h2>Search Available Bikes</h2>
+<iframe id="contentFrame" width="50%" height="200"></iframe><br>
+<button onclick="loadPage('show_bikes.html')">Show Bikes</button><br>
+<script>
+    function loadPage(page) {
+        document.getElementById('contentFrame').src = page;
+    }
+</script>
+<h2>Book a Ride</h2>
+<form id="rideForm">
+    <input placeholder="Ride ID" name="ride_id"><br>
+    <input placeholder="Customer ID" name="customer_id"><br>
+    <input placeholder="Bike ID" name="bike_id"><br>
+    <input placeholder="Start Location ID" name="start_location_id"><br>
+    <input placeholder="End Location ID" name="end_location_id"><br>
+    <input placeholder="Start Time (YYYY-MM-DD HH:MM:SS)" name="start_time"><br>
+    <input placeholder="End Time (YYYY-MM-DD HH:MM:SS)" name="end_time"><br>
+    <input placeholder="Distance (KM)" name="distance_covered"><br>
+    <input placeholder="Cost" name="cost"><br>
+    <button type="submit">Book</button>
+</form>
+
+<pre id="output"></pre>
+
+<script>
+    document.getElementById('rideForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const body = {
+            ride_id: form.ride_id.value,
+            customer_id: form.customer_id.value,
+            bike_id: form.bike_id.value,
+            start_location_id: form.start_location_id.value,
+            end_location_id: form.end_location_id.value,
+            start_time: form.start_time.value,
+            end_time: form.end_time.value,
+            distance_covered: form.distance_covered.value,
+            cost: form.cost.value,
+        };
+
+        const res = await fetch('http://localhost:3000/api/rides/book', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+        });
+
+        const text = await res.text();
+        document.getElementById('output').textContent = text;
+    });
+</script>

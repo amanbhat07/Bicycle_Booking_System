@@ -1,0 +1,11 @@
+<h2>Bikes Needing Inspection</h2>
+<button onclick="loadInspection()">Load List</button>
+<pre id="output"></pre>
+
+<script>
+    async function loadInspection() {
+        const res = await fetch('http://localhost:3000/api/rides/inspection-needed');
+        const data = await res.json();
+        document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+    }
+</script>

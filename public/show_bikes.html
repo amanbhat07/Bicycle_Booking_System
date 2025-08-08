@@ -1,0 +1,13 @@
+<h2>Show Available Bikes at Location</h2>
+<input id="locId" placeholder="Location ID">
+<button onclick="loadBikes()">Show</button>
+<pre id="output"></pre>
+
+<script>
+    async function loadBikes() {
+        const locId = document.getElementById('locId').value;
+        const res = await fetch(`http://localhost:3000/api/rides/show-bikes/${locId}`);
+        const data = await res.json();
+        document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+    }
+</script>
